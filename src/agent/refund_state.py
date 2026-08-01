@@ -16,3 +16,11 @@ class RefundState(TypedDict):
 
     # Error Logging
     error_logs: list[str]
+
+    # ==========================================
+    # 2. MOCK TOOLS & BUSINESS LOGIC
+    # ==========================================
+    def check_policy(days: int) -> tuple[bool, str]:
+        if days <= 30:
+            return True, "Within the30-day return window"
+        return False, f"Return rejeced. Purchase was {days} days ago(limit is 30)"
