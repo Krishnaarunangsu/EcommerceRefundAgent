@@ -7,7 +7,7 @@ if TYPE_CHECKING:
 class FinanceAgent:
     def process_payment(self, state: "RefundState") -> Dict[str, Any]:
         """
-        
+
         Args:
             state:
 
