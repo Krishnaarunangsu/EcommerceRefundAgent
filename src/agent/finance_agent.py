@@ -6,6 +6,14 @@ if TYPE_CHECKING:
 
 class FinanceAgent:
     def process_payment(self, state: "RefundState") -> Dict[str, Any]:
+        """
+        
+        Args:
+            state:
+
+        Returns:
+
+        """
         """Handles financial ledger clearing and ledger updates."""
         print("[Agent] Finance Agent processing payment transaction...")
         try:

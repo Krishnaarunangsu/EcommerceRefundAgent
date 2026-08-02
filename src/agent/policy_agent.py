@@ -7,6 +7,14 @@ if TYPE_CHECKING:
 
 class PolicyAgent:
     def evaluate_policy(self, state: "RefundState") -> Dict[str, Any]:
+        """
+
+        Args:
+            state:
+
+        Returns:
+
+        """
         print("\n[Agent] Policy Agent checking item eligibility...")
         try:
             approved, reason = state.check_policy_rules(state.days_since_purchase)

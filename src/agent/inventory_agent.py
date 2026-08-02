@@ -6,6 +6,14 @@ if TYPE_CHECKING:
 
 class InventoryAgent:
     def update_inventory(self, state: "RefundState") -> Dict[str, Any]:
+        """
+
+        Args:
+            state:
+
+        Returns:
+
+        """
         """Handles physical warehouse restock logs."""
         print("[Agent] Inventory Agent logging item return...")
         try:

@@ -24,15 +24,40 @@ class RefundState(BaseModel):
 
     # Simplified method signature
     def check_policy_rules(self, days: int) -> tuple[bool, str]:
+        """
+
+        Args:
+            days:
+
+        Returns:
+
+        """
         if days <= 30:
             return True, "Within the valid 30-day return window."
         return False, f"Return rejected. Purchase was {self.days_since_purchase} days ago (limit is 30)."
 
     def call_warehouse_api(self, item_id: str) -> bool:
+        """
+
+        Args:
+            item_id:
+
+        Returns:
+
+        """
         print(f"[API] Warehouse DB updated: Item {item_id} marked as 'restocking'.")
         return True
 
     def call_stripe_api(self, customer_id: str, amount: float) -> bool:
+        """
+
+        Args:
+            customer_id:
+            amount:
+
+        Returns:
+
+        """
         if amount <= 0:
             raise ValueError("Refund amount must be greater than zero.")
         print(f"[API] Stripe processed refund of ${amount} for Customer {customer_id}.")
@@ -57,6 +82,14 @@ workflow.add_node("FinanceAgent", finance_agent.process_payment)
 # 4. CONDITIONAL ORCHESTRATION ROUTER
 # ==========================================
 def router_node(state: RefundState) -> Literal["approved_path", "reject_path"]:
+    """
+
+    Args:
+        state:
+
+    Returns:
+
+    """
     """Acts as the orchestrator routing the state payload."""
     # Fixed: Replaced state.get("policy_approved") with state.policy_approved
     if state.policy_approved:
